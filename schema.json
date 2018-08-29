@@ -1,0 +1,380 @@
+{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "Pager-Impact",
+   "description": "A pager impact product.",
+   "type": "object",
+   "definitions": {
+      "total_feature_schema": {
+         "type": "object",
+         "definitions": {
+            "geometry": {
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "enum": [
+                        "Point"
+                     ]
+                  },
+                  "coordinates": {
+                     "type": "array",
+                     "minItems": 2,
+                     "maxItems": 2,
+                     "items": {
+                        "type": "number"
+                     }
+                  }
+               },
+               "required": [
+                  "type",
+                  "coordinates"
+               ]
+            },
+            "prop_schema": {
+               "type": "object",
+               "properties": {
+                  "id": {
+                     "type": "string"
+                  },
+                  "effect-type": {
+                     "enum": [
+                        "tsunami",
+                        "seiche",
+                        "mine collapse",
+                        "mine blast",
+                        "coal bump",
+                        "rockburst",
+                        "sandblows",
+                        "uplift",
+                        "subsidence",
+                        "ground cracking",
+                        "liquefaction",
+                        "felt",
+                        "landslide",
+                        "fire",
+                        "volcanic activity",
+                        "geyser activity",
+                        "odors",
+                        "lights",
+                        "heard",
+                        "faulting",
+                        "shaking",
+                        "heart attack",
+                        "car accident",
+                        "fleeing building",
+                        "dam failure"
+                     ]
+                  },
+                  "loss-type": {
+                     "enum": [
+                        "buildings",
+                        "electricity",
+                        "water",
+                        "telecommunications",
+                        "roads",
+                        "bridges",
+                        "railroads",
+                        "dollars",
+                        "livestock",
+                        "people"
+                     ]
+                  },
+                  "loss-extent": {
+                     "enum": [
+                        "damaged",
+                        "destroyed",
+                        "damaged or destroyed",
+                        "displaced",
+                        "missing",
+                        "injured",
+                        "killed"
+                     ]
+                  },
+                  "loss-max": {
+                     "type": "number"
+                  },
+                  "loss-min": {
+                     "type": "number"
+                  },
+                  "loss-value": {
+                     "type": "number"
+                  },
+                  "collection-time": {
+                     "type": "string"
+                  },
+                  "collection-author": {
+                     "type": "string"
+                  },
+                  "collection-source": {
+                     "type": "string"
+                  },
+                  "loss-quantifier": {
+                     "type": "string"
+                  },
+                  "comment": {
+                     "type": "string"
+                  }
+               },
+               "anyOf": [
+                  {
+                     "required": [
+                        "id",
+                        "effect-type",
+                        "loss-type",
+                        "loss-extent",
+                        "loss-max",
+                        "loss-min",
+                        "collection-time",
+                        "collection-author",
+                        "collection-source"
+                     ]
+                  },
+                  {
+                     "required": [
+                        "id",
+                        "effect-type",
+                        "loss-type",
+                        "loss-extent",
+                        "loss-value",
+                        "collection-time",
+                        "collection-author",
+                        "collection-source"
+                     ]
+                  }
+               ],
+               "additionalProperties": false
+            }
+         },
+         "properties": {
+            "type": {
+               "enum": [
+                  "Feature"
+               ]
+            },
+            "geometry": {
+               "$ref": "#/definitions/geometry"
+            },
+            "properties": {
+               "type": "object",
+               "properties": {
+                  "id": {
+                     "type": "string"
+                  },
+                  "time": {
+                     "type": "string"
+                  },
+                  "location": {
+                     "type": "string"
+                  },
+                  "magnitude": {
+                     "type": "number"
+                  },
+                  "impact-totals": {
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/prop_schema"
+                     }
+                  }
+               },
+               "required": [
+                  "id",
+                  "time",
+                  "location",
+                  "magnitude",
+                  "impact-totals"
+               ]
+            }
+         },
+         "required": [
+            "type",
+            "geometry",
+            "properties"
+         ],
+         "additionalProperties": false
+      },
+      "contributing_feature_schema": {
+         "type": "object",
+         "definitions": {
+            "geometry": {
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "enum": [
+                        "Point"
+                     ]
+                  },
+                  "coordinates": {
+                     "type": "array",
+                     "minItems": 2,
+                     "maxItems": 2,
+                     "items": {
+                        "type": "number"
+                     }
+                  }
+               },
+               "required": [
+                  "type",
+                  "coordinates"
+               ]
+            },
+            "prop_schema": {
+               "type": "object",
+               "properties": {
+                  "id": {
+                     "type": "string"
+                  },
+                  "effect-type": {
+                     "enum": [
+                        "tsunami",
+                        "seiche",
+                        "mine collapse",
+                        "mine blast",
+                        "coal bump",
+                        "rockburst",
+                        "sandblows",
+                        "uplift",
+                        "subsidence",
+                        "ground cracking",
+                        "liquefaction",
+                        "felt",
+                        "landslide",
+                        "fire",
+                        "volcanic activity",
+                        "geyser activity",
+                        "odors",
+                        "lights",
+                        "heard",
+                        "faulting",
+                        "shaking",
+                        "heart attack",
+                        "car accident",
+                        "fleeing building",
+                        "dam failure"
+                     ]
+                  },
+                  "loss-type": {
+                     "enum": [
+                        "buildings",
+                        "electricity",
+                        "water",
+                        "telecommunications",
+                        "roads",
+                        "bridges",
+                        "railroads",
+                        "dollars",
+                        "livestock",
+                        "people"
+                     ]
+                  },
+                  "loss-extent": {
+                     "enum": [
+                        "damaged",
+                        "destroyed",
+                        "damaged or destroyed",
+                        "displaced",
+                        "missing",
+                        "injured",
+                        "killed"
+                     ]
+                  },
+                  "loss-max": {
+                     "type": "number"
+                  },
+                  "loss-min": {
+                     "type": "number"
+                  },
+                  "loss-value": {
+                     "type": "number"
+                  },
+                  "collection-time": {
+                     "type": "string"
+                  },
+                  "collection-author": {
+                     "type": "string"
+                  },
+                  "collection-source": {
+                     "type": "string"
+                  },
+                  "loss-quantifier": {
+                     "type": "string"
+                  },
+                  "comment": {
+                     "type": "string"
+                  }
+               },
+               "anyOf": [
+                  {
+                     "required": [
+                        "id",
+                        "effect-type",
+                        "loss-type",
+                        "loss-extent",
+                        "loss-max",
+                        "loss-min",
+                        "collection-time",
+                        "collection-author",
+                        "collection-source"
+                     ]
+                  },
+                  {
+                     "required": [
+                        "id",
+                        "effect-type",
+                        "loss-type",
+                        "loss-extent",
+                        "loss-value",
+                        "collection-time",
+                        "collection-author",
+                        "collection-source"
+                     ]
+                  }
+               ],
+               "additionalProperties": false
+            }
+         },
+         "properties": {
+            "type": {
+               "enum": [
+                  "Feature"
+               ]
+            },
+            "geometry": {
+               "$ref": "#/definitions/geometry"
+            },
+            "properties": {
+               "$ref": "#/definitions/prop_schema"
+            }
+         },
+         "required": [
+            "type",
+            "geometry",
+            "properties"
+         ],
+         "additionalProperties": false
+      }
+   },
+   "properties": {
+      "type": {
+         "enum": [
+            "FeatureCollection"
+         ]
+      },
+      "features": {
+         "type": "array",
+         "items": {
+            "anyOf": [
+               {
+                  "$ref": "#/definitions/total_feature_schema"
+               },
+               {
+                  "$ref": "#/definitions/contributing_feature_schema"
+               }
+            ]
+         }
+      }
+   },
+   "required": [
+      "type",
+      "features"
+   ],
+   "additionalProperties": false
+}
